@@ -2,6 +2,10 @@ class Node {
     int data;
     Node next;
 
+    Node() {
+
+    }
+
     Node (int data, Node next) {
         this.data = data;
         this.next = next;
@@ -95,20 +99,57 @@ public class LinkedList {
 
     return head;}
 
+    private static Node insertnewHead(Node head, int val) {
+        Node temp  = new Node(val, head);
+       
+    return temp; 
+    }
 
+    private static Node insertnewTail(Node head, int val) {
+        if(head == null) {return new Node(val);}
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        Node newNode = new Node(val);
+        temp.next = newNode;
+
+        return head;
+    }
+
+    private static Node insertkthNode(Node head, int val , int k) {
+        if (head == null) {
+            if( k == 1) {
+                return new Node(val);
+            }
+            else {System.out.println("LinkedList is empty put valid value for k !");}
+        }
+        int cnt = 0; 
+        Node temp = head;
+        while (temp.next != null) {
+            cnt++;
+            if(cnt == k-1) {
+                Node n = new Node(val);
+                n.next = temp.next;
+                temp.next = n;
+                break;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
 
     public static void main(String[] args) {
         int[] arr = new int[] {1,2,3,4};
         Node head = arrtoLL(arr);
+
+        head = insertkthNode(head,6,3);
+        printLL(head);
        
         System.out.println("Length of LL: " + lengthOfLL(head));
         System.out.println(searchValue(head,1)); 
-        // head = removeHead(head);
-        // printLL(head);
-        // head = removeTail(head);
-        // printLL(head);
-        head = removekthNode(head, 2);
-        printLL(head);
+
+        
     }
    
 }

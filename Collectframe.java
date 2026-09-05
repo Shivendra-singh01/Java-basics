@@ -103,7 +103,7 @@ public static void main(String[] args) {
         hash.put(1,"Anshul");
         hash.put(2,"Shivendra");
         hash.put(3,"Shiv");
-        hash.get(1);
+        
         
         System.out.println("HashMap-"+hash);
         System.out.println(hash.containsKey(2));
